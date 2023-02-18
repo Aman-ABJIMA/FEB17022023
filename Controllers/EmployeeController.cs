@@ -1,4 +1,5 @@
 ﻿using DataInterfaces;
+using FormatAPI.Infrastructure.Handlers.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,17 +9,18 @@ namespace FormatAPI.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly IEmployeeRepository _employeeRepository;
+       // private readonly IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeHandler _employeeHandler;
 
-        public EmployeeController(IEmployeeRepository employeeRepository)
+        public EmployeeController(IEmployeeHandler employeeHandler)
         {
-            _employeeRepository = employeeRepository;
+           _employeeHandler = employeeHandler;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllEmployee()
         {
-            var records = await _employeeRepository.GetAll();
+            var records = await _employeeHandler.GetAllEmployeeAsync();
             return Ok(records);
         }
     }
