@@ -1,6 +1,6 @@
 ﻿using Data;
 using DataInterfaces;
-
+#nullable disable
 namespace FormatAPI
 {
     public static class ServiceExtension

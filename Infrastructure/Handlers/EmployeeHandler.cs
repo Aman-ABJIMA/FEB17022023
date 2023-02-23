@@ -1,5 +1,4 @@
-﻿using Domain;
-using FormatAPI.Infrastructure.Handlers.Interfaces;
+﻿using FormatAPI.Infrastructure.Handlers.Interfaces;
 using Models;
 using ServiceInterfaces;
 
@@ -14,9 +13,14 @@ namespace FormatAPI.Infrastructure.Handlers
             _employeeService = employeeService;
         }
 
-        public Task<bool> AddEmployeeAsync(Employee employee)
+        public Task<bool> AddEmployeeAsync(EmployeeDetails employee)
         {
            return _employeeService.AddEmployeeAsync(employee);
+        }
+
+        public Task<bool> DeleteAllEmployeeAsync()
+        {
+            return _employeeService.DeleteAllEmployeeAsync();
         }
 
         public Task<bool> DeleteEmployeeAsync(int id)
@@ -34,7 +38,7 @@ namespace FormatAPI.Infrastructure.Handlers
             return _employeeService.GetEmployeeByIdAsync(id);   
         }
 
-        public Task<bool> UpdateEmployeeAsync(int id, Employee employee)
+        public Task<bool> UpdateEmployeeAsync(int id, EmployeeDetails employee)
         {
             return _employeeService.UpdateEmployeeAsync(id, employee);
         }
